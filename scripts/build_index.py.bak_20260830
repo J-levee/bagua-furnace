@@ -1,0 +1,98 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""扫描方法论卡库，生成单一索引 INDEX.md（按 pattern 聚类）。
+深卡 deep_*.md 带 frontmatter；薄卡 harbor_*.md 仅列名待增强。
+用法：python build_index.py
+"""
+import os, re, glob
+
+LIB = os.path.expanduser(r"C:\Users\zyd\.workbuddy\methodology-library")
+OUT = os.path.join(LIB, "INDEX.md")
+
+REQUIRED_PATTERNS = []  # 不强制，仅统计
+
+
+def parse_frontmatter(text):
+    """解析 --- ... --- 之间的键值，支持 ['a','b'] 与 '- ' 列表块。"""
+    meta = {}
+    m = re.match(r"^---\s*\n(.*?)\n---\s*\n", text, re.S)
+    if not m:
+        return meta
+    block = m.group(1)
+    lines = block.split("\n")
+    i = 0
+    while i < len(lines):
+        line = lines[i]
+        kv = re.match(r"^([A-Za-z_][\w-]*):\s*(.*)$", line)
+        if kv:
+            key, val = kv.group(1), kv.group(2).strip()
+            if val.startswith("["):
+                inner = val.strip("[]").strip()
+                meta[key] = [x.strip().strip("'\"") for x in inner.split(",") if x.strip()] if inner else []
+            elif val == "":
+                # 列表块：后续以 '- ' 开头的行
+                items = []
+                j = i + 1
+                while j < len(lines) and lines[j].lstrip().startswith("- "):
+                    items.append(lines[j].lstrip()[2:].strip())
+                    j += 1
+                meta[key] = items
+                i = j
+                continue
+            else:
+                meta[key] = val
+        i += 1
+    return meta
+
+
+def title_of(path, text):
+    m = re.search(r"^#\s+(.+)$", text, re.M)
+    if m:
+        return m.group(1).strip()
+    return os.path.basename(path)
+
+
+def main():
+    deep = sorted(glob.glob(os.path.join(LIB, "deep_*.md")))
+    thin = sorted(glob.glob(os.path.join(LIB, "harbor_*.md")))
+
+    cards = []  # (pattern, aux, fname, title, trigger, surface, conf)
+    for p in deep:
+        text = open(p, encoding="utf-8").read()
+        fm = parse_frontmatter(text)
+        cards.append((
+            fm.get("pattern", "?"),
+            fm.get("pattern_aux", []),
+            os.path.basename(p),
+            title_of(p, text),
+            fm.get("trigger", []),
+            fm.get("surface_domain", []),
+            fm.get("confidence", "-"),
+        ))
+
+    by_pattern = {}
+    for c in cards:
+        by_pattern.setdefault(c[0], []).append(c)
+
+    L = []
+    L.append("# 方法论卡库索引 INDEX\n")
+    L.append(f"> 自动生成。深卡 {len(deep)} 张（带路由层+理解层），薄卡 {len(thin)} 张（待增强）。\n")
+    L.append("## 一、按 pattern 聚类的深卡（扫地僧'博览'入口）\n")
+    for pat in sorted(by_pattern):
+        L.append(f"### pattern: {pat}  （{len(by_pattern[pat])} 张）\n")
+        for (_, aux, fn, ti, tr, su, cf) in by_pattern[pat]:
+            trg = "；".join(tr) if tr else "（未填触发）"
+            L.append(f"- **{ti}**  [{fn}]\n  - 辅pattern: {', '.join(aux) if aux else '—'}\n  - 触发: {trg}\n  - 表面域: {', '.join(su) if su else '—'} ｜ 置信: {cf}\n")
+    L.append("## 二、薄卡清单（仅叙述层，待回填路由头+理解层）\n")
+    for p in thin:
+        L.append(f"- {os.path.basename(p)}\n")
+    L.append("## 三、统计\n")
+    L.append(f"- 深卡: {len(deep)} ｜ 薄卡: {len(thin)} ｜ 覆盖主 pattern: {len(by_pattern)}\n")
+
+    open(OUT, "w", encoding="utf-8").write("\n".join(L))
+    print(f"INDEX 已生成：{OUT}")
+    print(f"深卡 {len(deep)} 张，薄卡 {len(thin)} 张，主 pattern {len(by_pattern)} 个")
+
+
+if __name__ == "__main__":
+    main()
