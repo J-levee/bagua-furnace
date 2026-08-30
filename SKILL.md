@@ -8,7 +8,7 @@ description: |
   Use when：用户给了材料或链接并想「提炼方法论」「萃取方法」「做成方法卡」「建立方法论库」，或想把某本书/门课/段视频/段录音变成可迁移的决策框架、思维模型。支持输入类型：纯文本、本地 PDF/图片、网页文章链接、抖音/快手/小红书/视频号短视频分享链接、YouTube/B站/本地音视频（需 ASR 转写）。消费方是扫地僧等谋士层技能——本炉只产顾问级方法论卡，不产可执行 Agent Skill。
 
   Trigger keywords：提炼方法论、萃取方法、做方法卡、建立方法论库、把书变框架、把课变模型、视频转方法论、笔记提炼、群聊洞察、链接提炼、八卦炉。
-version: 1.2.0
+version: 1.2.1
 agent_created: true
 recommends:
   - sweeping-monk
@@ -190,4 +190,4 @@ python scripts/forge-register.py verify <验证码>
 
 ---
 
-> 由技能锻造炉（cjg-skill-forge）锻造 · v1.2.0 · 🔄 持续自我迭代中，由藏经阁·易筋支持
+> 由技能锻造炉（cjg-skill-forge）锻造 · v1.2.1 · 🔄 持续自我迭代中，由藏经阁·易筋支持

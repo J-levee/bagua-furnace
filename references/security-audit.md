@@ -1,4 +1,4 @@
-# 云鼎安全审计（八卦炉 v1.2.0）
+# 云鼎安全审计（八卦炉 v1.2.1）
 
 - 审计范围：`SKILL.md` + `references/`（ingestion / extraction-lenses / method-card-schema / sources / benchmark / coverage / gap-backlog / signals / discovery / intro）+ `scripts/`（进化燃料套件，由锻造炉注入）+ `cloud_config.json`。
 - **结论：Benign（无害）**。
