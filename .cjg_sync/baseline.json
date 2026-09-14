@@ -1,0 +1,30 @@
+{
+  "created_at": "2026-09-13T18:11:27",
+  "files": {
+    "cloud_config.json": "1d856364e043d5af0e6d7dc6636c73f42b910c477d75f8dda6c94acc26576f70",
+    "SKILL.md": "2a39c37122bd83fbd7586e34b4e5defe6b095c96ea0085e30adcee379e5b3d00",
+    "_meta.json": "806e6bf9d2d2fcfbc5b76d8785f8f76ee34b5c85eaf9e5bc699bf965512a22d1",
+    "references/benchmark.md": "a63025e7c6bb2d9b1fa82efa2c3244a80dff037aa65e0f68329521bb86e8d149",
+    "references/clarity-fidelity-report.md": "f0a8386bbad83623f73d47d8e6d2909cb8da8593be81bba50ed52eb878b80bc0",
+    "references/coverage.md": "a6dcdd9e1498e024988f6d82de454c47d1cb1c5bf2056cf3717c95cf283e4a74",
+    "references/discovery.md": "0570d28aef76b8cc7c45c017c2b4e6bf063c6a8ce0e236ca11a08a36dd8475b7",
+    "references/extraction-lenses.md": "7664b8bb2b954ca0a4f3ae0652b09275413ebcc63f523b601f3e1534a6865ab0",
+    "references/gap-backlog.md": "a3cd9af5b64e680150bff5a3de38f5a9019a411cc2bfba1cfe28c2f7fcffb407",
+    "references/ingestion.md": "a061bff65b81b05ff398961e46219e6e4138961eed7a39e284ef10912ca50ba9",
+    "references/intro.md": "10d39a5bfe35d4e89f16d725473786ee436dbac33db8692b8763291a1181b0f9",
+    "references/long-text-distillation.md": "1003d2db2033f20b09af74c5022c4a8909162be7c38864290da44b67f885f1dd",
+    "references/method-card-schema.md": "a35ece08544d1489d8888af0244f1af32d0fc63587b1ee6a72c6790fef9023d0",
+    "references/pattern-taxonomy.md": "e243181d5ecfa0db175d3f4b953a55d089e34580d90e99a07375181e7648931f",
+    "references/security-audit.md": "916dfb0a67aa6d116be0ca7e743b7e55150b3b6b199177367f9447c0f0c16e6a",
+    "references/signals.md": "1073ba9e750734c76d2f929466a45f7869bc1ae5bb2f1d5a98c22fdd2ffd05d5",
+    "references/sources.md": "7f98c2a0687e14ca91f13cfdd47f6081795c7af28b324654098928686c52e6d4",
+    "scripts/build_index.py": "a40526bc79f88955c6a22683ecce9cc9968e887adafe5cbfc6ace99c5a4352d2",
+    "scripts/capture_skill_edits.py": "9e5eb8acc41cf26ea8c4f00b9e8f728c71e7303d4dd41141ece467eb837b6ba7",
+    "scripts/cjg-proposal-cli.py": "f728d0cae4f92b9737619b8de2598d59441d93ee853fadc36213355c7f05a2b0",
+    "scripts/download_signals.py": "6910a963e60a4482660512b58c10a3ab517900299ad7e7334cdf02fba75c95a9",
+    "scripts/forge-register.py": "5dd915be1921650f46902ee8e624a18a4139e4c035118446699e15514d203d66",
+    "scripts/session_hook.py": "79c88d9b9d35eb3d9f517fcc9b59282cec3993c14f06094eac7c1dc70978eab1",
+    "scripts/signal_control.py": "417af366b390b5149e434aca15a65673fff9f664bd4a99f691a02e8560b2eddb",
+    "scripts/upload_signals.py": "08d06f68fccebec9854c51c9d0da7bfcfd4952d1509dc510f44cf8036d5ccb08"
+  }
+}
